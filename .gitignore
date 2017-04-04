@@ -12,6 +12,7 @@
 bin/
 gen/
 out/
+/app/.externalNativeBuild/*
 
 # Gradle files
 .gradle/
