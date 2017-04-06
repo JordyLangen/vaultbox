@@ -1,9 +1,8 @@
-package com.jlangen.vaultbox.database
+package com.jlangen.vaultbox.vaults
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.ViewGroup
 import com.jlangen.vaultbox.R
 import com.jlangen.vaultbox.VaultboxApplication
 import com.jlangen.vaultbox.architecture.DaggerCoordinatorProvider
@@ -12,10 +11,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class DatabasesActivity : AppCompatActivity() {
+class VaultOverviewActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var databaseRepository: KeepassDatabaseRepository
+    lateinit var databaseRepository: VaultRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +24,7 @@ class DatabasesActivity : AppCompatActivity() {
 
         // todo: permissions
 
+        // todo: move to base activity
         Coordinators.bind(findViewById(R.id.main_view), DaggerCoordinatorProvider())
 
         databaseRepository.findAll()

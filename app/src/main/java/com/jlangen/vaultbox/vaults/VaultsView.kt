@@ -1,15 +1,15 @@
-package com.jlangen.vaultbox.database
+package com.jlangen.vaultbox.vaults
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.jlangen.vaultbox.architecture.coordinators.ViewRenderer
 
-class DatabasesView @JvmOverloads constructor(
+class VaultsView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), ViewRenderer<DatabasesViewState> {
+) : FrameLayout(context, attrs, defStyleAttr), ViewRenderer<VaultsViewState> {
 
-    override fun render(state: DatabasesViewState) {
+    override fun render(state: VaultsViewState) {
 
     }
 }

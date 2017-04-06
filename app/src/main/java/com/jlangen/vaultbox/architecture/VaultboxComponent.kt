@@ -1,16 +1,16 @@
 package com.jlangen.vaultbox.architecture
 
-import com.jlangen.vaultbox.database.DatabaseModule
-import com.jlangen.vaultbox.database.DatabasesActivity
-import com.jlangen.vaultbox.database.DatabasesCoordinator
+import com.jlangen.vaultbox.vaults.VaultsModule
+import com.jlangen.vaultbox.vaults.VaultOverviewActivity
+import com.jlangen.vaultbox.vaults.VaultsViewCoordinator
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(AppModule::class, DatabaseModule::class))
+@Component(modules = arrayOf(AppModule::class, VaultsModule::class))
 interface VaultboxComponent {
 
-    fun inject(databasesActivity: DatabasesActivity)
+    fun inject(vaultOverviewActivity: VaultOverviewActivity)
 
-    fun resolveDatabasesCoordinator(): DatabasesCoordinator
+    fun resolveVaultsViewCoordinator(): VaultsViewCoordinator
 }

@@ -4,7 +4,7 @@ import android.app.Application
 import com.jlangen.vaultbox.architecture.AppModule
 import com.jlangen.vaultbox.architecture.DaggerVaultboxComponent
 import com.jlangen.vaultbox.architecture.VaultboxComponent
-import com.jlangen.vaultbox.database.DatabaseModule
+import com.jlangen.vaultbox.vaults.VaultsModule
 
 class VaultboxApplication : Application() {
 
@@ -18,7 +18,7 @@ class VaultboxApplication : Application() {
 
         component = DaggerVaultboxComponent.builder()
                 .appModule(AppModule(this))
-                .databaseModule(DatabaseModule())
+                .databaseModule(VaultsModule())
                 .build()
     }
 }
