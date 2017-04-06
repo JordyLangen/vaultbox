@@ -9,7 +9,7 @@ import android.view.View
 
  * @see CoordinatorProvider
  */
-open class Coordinator<in TState, in TView : ViewRenderer<TState>> {
+open class Coordinator<in TState, in TStateRenderer : StateRenderer<TState>> {
 
     /**
      * True from just before attach until just after detach.
@@ -24,7 +24,7 @@ open class Coordinator<in TState, in TView : ViewRenderer<TState>> {
 
      * @see View.onAttachedToWindow
      */
-    open fun attach(view: TView) {
+    open fun attach(view: TStateRenderer) {
     }
 
     /**
@@ -34,6 +34,6 @@ open class Coordinator<in TState, in TView : ViewRenderer<TState>> {
 
      * @see View.onDetachedFromWindow
      */
-    open fun detach(view: TView) {
+    open fun detach(view: TStateRenderer) {
     }
 }

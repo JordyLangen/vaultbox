@@ -3,7 +3,7 @@ package com.jlangen.vaultbox.architecture.coordinators
 import android.view.View
 import com.jlangen.vaultbox.R
 
-internal class Binding<TState, TView : ViewRenderer<TState>>(private val coordinator: Coordinator<TState, TView>, private val view: View) : View.OnAttachStateChangeListener {
+internal class Binding<TState, TView : StateRenderer<TState>>(private val coordinator: Coordinator<TState, TView>, private val view: View) : View.OnAttachStateChangeListener {
     private var attached: View? = null
 
     override fun onViewAttachedToWindow(attachedView: View) {

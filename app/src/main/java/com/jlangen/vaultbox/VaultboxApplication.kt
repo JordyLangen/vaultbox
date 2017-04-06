@@ -18,7 +18,7 @@ class VaultboxApplication : Application() {
 
         component = DaggerVaultboxComponent.builder()
                 .appModule(AppModule(this))
-                .databaseModule(VaultsModule())
+                .vaultsModule(VaultsModule())
                 .build()
     }
 }
