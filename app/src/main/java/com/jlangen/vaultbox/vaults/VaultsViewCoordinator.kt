@@ -15,7 +15,6 @@ class VaultsViewCoordinator(var vaultService: VaultService) : Coordinator<Vaults
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    // todo: rx these properties and eliminate render calls?
                     viewState.isLoading = false
                     viewState.vaults = it
                     view.render(viewState)

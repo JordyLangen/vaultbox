@@ -12,9 +12,9 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(AppModule::class, PermissionModule::class, VaultsModule::class))
 interface VaultboxComponent {
 
-    fun inject(vaultOverviewActivity: VaultOverviewActivity)
-
     fun resolveVaultsViewCoordinator(): VaultsViewCoordinator
 
     fun resolvePermissionService(): PermissionService
+
+    fun resolveNavigator(): Navigator
 }

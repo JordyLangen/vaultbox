@@ -15,6 +15,8 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     private var permissionService: PermissionService = VaultboxApplication.component.resolvePermissionService()
+    private var navigator: Navigator = VaultboxApplication.component.resolveNavigator()
+
     private var permissionRequestsDisposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +27,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
+        navigator.navigated(this)
         if (permissionRequestsDisposable == null) {
             observePermissionRequests()
         }
@@ -56,7 +58,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-
+        navigator.disable()
         permissionRequestsDisposable?.dispose()
         permissionRequestsDisposable = null
     }

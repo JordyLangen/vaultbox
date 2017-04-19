@@ -15,9 +15,7 @@ class VaultOverviewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        VaultboxApplication.component.inject(this)
-
-        // todo: move to base activity
+        // todo: move to base activity?
         Coordinators.bind(findViewById(R.id.main_view), DaggerCoordinatorProvider())
     }
 }
