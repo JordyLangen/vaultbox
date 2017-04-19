@@ -15,8 +15,8 @@ android:
 script: ./gradlew assemble test
 
 before_install:
-- git clone --depth 1 https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
-- export ANDROID_NDK_HOME=$HOME/android-ndk-root
+  - git clone --depth 1 https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
+  - export ANDROID_NDK_HOME=$HOME/android-ndk-root
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
