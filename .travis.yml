@@ -1,0 +1,26 @@
+language: android
+jdk: oraclejdk8
+
+android:
+  components:
+  - tools
+  - extra-android-m2repository
+  - extra-google-m2repository
+  - extra-google-google_play_services
+  - build-tools-25.0.2
+  - android-25
+  licenses:
+  - android-sdk-license-.+
+
+script: ./gradlew assemble test
+
+before_install:
+- git clone --depth 1 https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
+- export ANDROID_NDK_HOME=$HOME/android-ndk-root
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
