@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.jlangen.vaultbox"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -41,6 +41,7 @@ dependencies {
 
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxkotlin:2.0.0'
+    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
 
     compile "com.google.dagger:dagger:${daggerVersion}"
     kapt("com.google.dagger:dagger-compiler:${daggerVersion}")

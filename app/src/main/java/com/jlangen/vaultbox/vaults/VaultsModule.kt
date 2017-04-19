@@ -1,5 +1,6 @@
 package com.jlangen.vaultbox.vaults
 
+import com.jlangen.vaultbox.permissions.PermissionService
 import dagger.Module
 import dagger.Provides
 
@@ -12,7 +13,12 @@ class VaultsModule {
     }
 
     @Provides
-    fun provideVaultsViewCoordinator(databaseRepository: VaultRepository): VaultsViewCoordinator {
-        return VaultsViewCoordinator(databaseRepository)
+    fun provideVaultService(vaultRepository: VaultRepository, permissionService: PermissionService) : VaultService {
+        return VaultService(vaultRepository, permissionService)
+    }
+
+    @Provides
+    fun provideVaultsViewCoordinator(vaultService: VaultService): VaultsViewCoordinator {
+        return VaultsViewCoordinator(vaultService)
     }
 }

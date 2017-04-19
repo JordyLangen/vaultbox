@@ -4,14 +4,14 @@ import com.jlangen.vaultbox.architecture.coordinators.Coordinator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class VaultsViewCoordinator(var vaultRepository: VaultRepository) : Coordinator<VaultsViewState, VaultsState>() {
+class VaultsViewCoordinator(var vaultService: VaultService) : Coordinator<VaultsViewState, VaultsState>() {
 
     private val viewState: VaultsViewState = VaultsViewState(true, emptyList())
 
     override fun attach(view: VaultsState) {
         view.render(viewState)
 
-        vaultRepository.findAll()
+        vaultService.findAll()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {

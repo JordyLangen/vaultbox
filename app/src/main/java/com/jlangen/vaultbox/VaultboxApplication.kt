@@ -4,6 +4,7 @@ import android.app.Application
 import com.jlangen.vaultbox.architecture.AppModule
 import com.jlangen.vaultbox.architecture.DaggerVaultboxComponent
 import com.jlangen.vaultbox.architecture.VaultboxComponent
+import com.jlangen.vaultbox.permissions.PermissionModule
 import com.jlangen.vaultbox.vaults.VaultsModule
 
 class VaultboxApplication : Application() {
@@ -18,6 +19,7 @@ class VaultboxApplication : Application() {
 
         component = DaggerVaultboxComponent.builder()
                 .appModule(AppModule(this))
+                .permissionModule(PermissionModule())
                 .vaultsModule(VaultsModule())
                 .build()
     }
