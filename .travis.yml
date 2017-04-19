@@ -4,9 +4,9 @@ jdk: oraclejdk8
 android:
   components:
   - tools
+  - platform-tools
   - extra-android-m2repository
   - extra-google-m2repository
-  - extra-google-google_play_services
   - build-tools-25.0.2
   - android-25
   licenses:
@@ -15,7 +15,7 @@ android:
 script: ./gradlew assemble test
 
 before_install:
-  - git clone --depth 1 https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
+  - git clone https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
   - export ANDROID_NDK_HOME=$HOME/android-ndk-root
 
 before_cache:
