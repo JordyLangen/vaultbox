@@ -15,11 +15,10 @@ android:
 script: ./gradlew assemble test
 
 before_install:
-  - git clone https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
-  - export ANDROID_NDK_HOME=$HOME/android-ndk-root
-  - cd ${ANDROID_NDK_HOME}/build/tools
-  - ./make-standalone-toolchain.sh --platform=android-24 --install-dir=${ANDROID_NDK_HOME}/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64 --force
-  - cd ${HOME}/build/JordyLangen/vaultbox
+  - curl -L http://dl.google.com/android/repository/android-ndk-r14-linux-x86_64.zip -O
+  - unzip -q android-ndk-r14-linux-x86_64.zip
+  - export ANDROID_NDK_HOME=`pwd`/android-ndk-r14
+  - export PATH=$PATH:${ANDROID_NDK_HOME}
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
