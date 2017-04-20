@@ -18,7 +18,7 @@ before_install:
   - git clone https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
   - export ANDROID_NDK_HOME=$HOME/android-ndk-root
   - cd ${ANDROID_NDK_HOME}/build/tools
-  - ./make-standalone-toolchain.sh --platform=android-24 --install-dir=${ANDROID_NDK_HOME}/toolchains/standalone-toolchain
+  - ./make-standalone-toolchain.sh --platform=android-24 --install-dir=${ANDROID_NDK_HOME}/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64 --force
   - cd ${HOME}/build/JordyLangen/vaultbox
 
 before_cache:
