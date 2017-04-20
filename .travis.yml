@@ -19,7 +19,7 @@ before_install:
   - export ANDROID_NDK_HOME=$HOME/android-ndk-root
   - cp -rf ${ANDROID_NDK_HOME}/platforms/android-24/arch-x86_64/usr/lib/crtbegin_so.o ${ANDROID_NDK_HOME}/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64/mips64el-linux-android/bin/ld
   - cp -rf ${ANDROID_NDK_HOME}/platforms/android-24/arch-x86_64/usr/lib/crtend_so.o ${ANDROID_NDK_HOME}/toolchains/mips64el-linux-android-4.9/prebuilt/linux-x86_64/mips64el-linux-android/bin/ld
-  - ./${ANDROID_NDK_HOME}/build/tools/make-standalone-toolchain.sh
+  - .${ANDROID_NDK_HOME}/build/tools/make-standalone-toolchain.sh
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
