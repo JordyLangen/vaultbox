@@ -18,6 +18,8 @@ before_install:
   - git clone https://github.com/urho3d/android-ndk.git $HOME/android-ndk-root
   - export ANDROID_NDK_HOME=$HOME/android-ndk-root
   - export SYSROOT=${ANDROID_NDK_HOME}/platforms/android-24/arch-x86_64
+  - ln -s ${ANDROID_NDK_HOME}/platforms/android-24/arch-x86_64/usr/lib/crtbegin_so.o ld/
+  - ln -s ${ANDROID_NDK_HOME}/platforms/android-24/arch-x86_64/usr/lib/crtend_so.o ld/
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
