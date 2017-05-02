@@ -4,13 +4,14 @@ import android.content.Context
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
-import android.widget.FrameLayout
+import android.view.View
+import android.widget.RelativeLayout
 import com.jlangen.vaultbox.architecture.coordinators.StateRenderer
 import kotlinx.android.synthetic.main.activity_vaults_overview.view.*
 
 class VaultsView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), StateRenderer<VaultsViewState> {
+) : RelativeLayout(context, attrs, defStyleAttr), StateRenderer<VaultsViewState> {
 
     private val adapter = VaultsAdapter(emptyList())
 
@@ -21,12 +22,18 @@ class VaultsView @JvmOverloads constructor(
     }
 
     override fun render(state: VaultsViewState) {
-        updateAdapter(state)
+        if (state.isLoading) {
+            vaults_view_progressbar.visibility = View.VISIBLE
+            updateAdapter(emptyList())
+        } else {
+            vaults_view_progressbar.visibility = View.GONE
+            updateAdapter(state.vaults)
+        }
     }
 
-    private fun updateAdapter(state: VaultsViewState) {
-        val diffResult = DiffUtil.calculateDiff(VaultDiffCallback(adapter.vaults, state.vaults), true)
-        adapter.vaults = state.vaults
+    private fun updateAdapter(vaults: List<Vault>) {
+        val diffResult = DiffUtil.calculateDiff(VaultDiffCallback(adapter.vaults, vaults), true)
+        adapter.vaults = vaults
         diffResult.dispatchUpdatesTo(adapter)
     }
 }
