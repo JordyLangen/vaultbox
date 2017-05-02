@@ -13,9 +13,8 @@ class VaultOverviewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_vaults_overview)
 
-        // todo: move to base activity?
-        Coordinators.bind(findViewById(R.id.main_view), DaggerCoordinatorProvider())
+        Coordinators.bind(findViewById(R.id.vaults_view), DaggerCoordinatorProvider())
     }
 }

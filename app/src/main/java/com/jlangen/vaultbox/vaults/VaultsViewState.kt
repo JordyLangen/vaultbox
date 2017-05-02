@@ -1,5 +1,3 @@
 package com.jlangen.vaultbox.vaults
 
-data class VaultsViewState(
-        var isLoading: Boolean,
-        var vaults: List<Vault>)
+data class VaultsViewState(val isLoading: Boolean, val vaults: List<Vault>)
