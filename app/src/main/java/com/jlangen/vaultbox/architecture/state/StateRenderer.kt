@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.architecture.coordinators
+package com.jlangen.vaultbox.architecture.state
 
 interface StateRenderer<in TState> {
 

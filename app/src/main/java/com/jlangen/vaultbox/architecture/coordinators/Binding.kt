@@ -1,29 +1,41 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.jlangen.vaultbox.architecture.coordinators
 
 import android.view.View
 import com.jlangen.vaultbox.R
+import com.jlangen.vaultbox.architecture.state.StateRenderer
+import com.jlangen.vaultbox.architecture.state.StateStore
 
-internal class Binding<TState, TView : StateRenderer<TState>>(private val coordinator: Coordinator<TState, TView>, private val view: View) : View.OnAttachStateChangeListener {
+internal class Binding<in TState, TView : StateRenderer<TState>>(private val coordinator: Coordinator<TState, TView>, private val view: View) : View.OnAttachStateChangeListener {
     private var attached: View? = null
 
     override fun onViewAttachedToWindow(attachedView: View) {
-        if (attachedView !== attached) {
-            attached = attachedView
-            if (coordinator.isAttached) {
-                throw IllegalStateException("Coordinator $coordinator is already attached to a View")
-            }
-            coordinator.isAttached = true
-            coordinator.attach(view as TView)
-            view.setTag(R.id.coordinator, coordinator)
+        if (attachedView === attached) return
+
+        if (coordinator.isAttached) {
+            throw IllegalStateException("Coordinator $coordinator is already attached to a View")
         }
+
+        attached = attachedView
+
+        coordinator.isAttached = true
+        val state = StateStore.resolve<TState>(view.id, view.context)
+        if (state != null) {
+            coordinator.state = state
+        }
+
+        coordinator.attach(view as TView)
+        view.setTag(R.id.coordinator, coordinator)
     }
 
-    override fun onViewDetachedFromWindow(v: View) {
-        if (v === attached) {
-            attached = null
-            coordinator.detach(view as TView)
-            coordinator.isAttached = false
-            view.setTag(R.id.coordinator, null)
-        }
+    override fun onViewDetachedFromWindow(view: View) {
+        if (view !== attached) return
+        StateStore.update(view.id, coordinator.state, view.context)
+
+        attached = null
+        coordinator.detach(this.view as TView)
+        coordinator.isAttached = false
+        this.view.setTag(R.id.coordinator, null)
     }
 }

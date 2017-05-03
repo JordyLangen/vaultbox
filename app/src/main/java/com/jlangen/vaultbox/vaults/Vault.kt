@@ -1,3 +1,5 @@
 package com.jlangen.vaultbox.vaults
 
-data class Vault(val name: String, val path: String)
+import java.io.Serializable
+
+data class Vault(val name: String, val path: String) : Serializable

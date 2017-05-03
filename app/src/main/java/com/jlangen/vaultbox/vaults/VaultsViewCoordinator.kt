@@ -6,16 +6,21 @@ import io.reactivex.schedulers.Schedulers
 
 class VaultsViewCoordinator(var vaultService: VaultService) : Coordinator<VaultsViewState, VaultsView>() {
 
-    private val viewState: VaultsViewState = VaultsViewState(true, emptyList())
+    override var state: VaultsViewState = VaultsViewState(true, emptyList())
 
     override fun attach(view: VaultsView) {
-        view.render(viewState)
+        view.render(state)
+
+        if (state.vaults.isNotEmpty()) {
+            return
+        }
 
         vaultService.findAll()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { vaults ->
-                    view.render(VaultsViewState(false, vaults))
+                    state = VaultsViewState(false, vaults)
+                    view.render(state)
                 }
     }
 }

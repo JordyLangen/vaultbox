@@ -1,6 +1,7 @@
 package com.jlangen.vaultbox.architecture.coordinators
 
 import android.view.View
+import com.jlangen.vaultbox.architecture.state.StateRenderer
 
 /**
  * A Coordinator is attached to one view at a time.
@@ -9,13 +10,15 @@ import android.view.View
 
  * @see CoordinatorProvider
  */
-open class Coordinator<in TState, in TStateRenderer : StateRenderer<TState>> {
+abstract class Coordinator<TState, in TStateRenderer : StateRenderer<TState>> {
 
     /**
      * True from just before attach until just after detach.
      */
     var isAttached: Boolean = false
         internal set
+
+    abstract var state: TState
 
     /**
      * Called when the view is attached to a Window.

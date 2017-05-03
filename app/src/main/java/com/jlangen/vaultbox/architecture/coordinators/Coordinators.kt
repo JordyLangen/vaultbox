@@ -15,23 +15,11 @@ object Coordinators {
     fun bind(view: View, provider: CoordinatorProvider) {
         val coordinator = provider.provideCoordinator(view) ?: return
 
-        val binding = Binding(coordinator as Coordinator<Nothing, Nothing>, view)
+        val binding = Binding(coordinator, view)
         view.addOnAttachStateChangeListener(binding)
         // Sometimes we missed the first attach because the child's already been added.
         // Sometimes we didn't. The binding keeps track to avoid double attachment of the Coordinator,
         // and to guard against attachment to two different views simultaneously.
         binding.onViewAttachedToWindow(view)
-    }
-
-    /**
-     * Installs a binder that calls [.bind] for any child view added
-     * to the group.
-     */
-    fun installBinder(viewGroup: ViewGroup, provider: CoordinatorProvider) {
-        viewGroup.setOnHierarchyChangeListener(Binder(provider))
-    }
-
-    fun getCoordinator(view: View): Coordinator<*, *> {
-        return view.getTag(R.id.coordinator) as Coordinator<*, *>
     }
 }

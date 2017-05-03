@@ -4,7 +4,9 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.jlangen.vaultbox.VaultboxApplication
+import com.jlangen.vaultbox.architecture.state.StateStore
 import com.jlangen.vaultbox.permissions.PermissionService
 import io.reactivex.disposables.Disposable
 
@@ -61,5 +63,12 @@ open class BaseActivity : AppCompatActivity() {
         navigator.disable()
         permissionRequestsDisposable?.dispose()
         permissionRequestsDisposable = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (isFinishing) {
+            StateStore.markFinished(this)
+        }
     }
 }

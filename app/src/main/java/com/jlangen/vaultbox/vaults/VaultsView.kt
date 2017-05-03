@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import com.jlangen.vaultbox.architecture.coordinators.StateRenderer
+import com.jlangen.vaultbox.architecture.state.StateRenderer
 import kotlinx.android.synthetic.main.activity_vaults_overview.view.*
 
 class VaultsView @JvmOverloads constructor(
