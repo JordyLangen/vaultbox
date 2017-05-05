@@ -1,10 +1,19 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.vault
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
+import com.jakewharton.rxrelay2.BehaviorRelay
+import com.jlangen.vaultbox.vault.VaultActivity
 import com.jlangen.vaultbox.permissions.PermissionService
+import com.jlangen.vaultbox.vault.Vault
 import io.reactivex.Observable
 
-class VaultService(private val vaultRepository: VaultRepository, private val permissionService: PermissionService) {
+class VaultService(private val vaultRepository: VaultRepository,
+                   private val permissionService: PermissionService,
+                   private val context: Context) {
+
+    var selectedVault: Vault? = null
 
     fun findAll(): Observable<List<Vault>> {
         if (permissionService.has(Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -26,5 +35,10 @@ class VaultService(private val vaultRepository: VaultRepository, private val per
                         requestRequiredPermissions()
                     }
                 }
+    }
+
+    fun open(vault: Vault) {
+        selectedVault = vault
+        context.startActivity(Intent(context, VaultActivity::class.java))
     }
 }

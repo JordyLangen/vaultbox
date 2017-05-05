@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.jakewharton.rxrelay2.PublishRelay
 import com.jlangen.vaultbox.R
+import com.jlangen.vaultbox.vault.Vault
 
 class VaultsAdapter(var vaults: List<Vault>) : RecyclerView.Adapter<VaultsAdapter.VaultViewHolder>() {
+
+    val onVaultClickRelay: PublishRelay<Vault> = PublishRelay.create<Vault>()
 
     override fun getItemCount(): Int {
         return vaults.size
@@ -22,6 +26,8 @@ class VaultsAdapter(var vaults: List<Vault>) : RecyclerView.Adapter<VaultsAdapte
         val vault = vaults[position]
         holder.nameView.text = vault.name
         holder.pathView.text = vault.path
+
+        holder.itemView.setOnClickListener { onVaultClickRelay.accept(vault); }
     }
 
     class VaultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

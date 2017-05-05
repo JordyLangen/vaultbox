@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.vault
 
 import java.io.Serializable
 

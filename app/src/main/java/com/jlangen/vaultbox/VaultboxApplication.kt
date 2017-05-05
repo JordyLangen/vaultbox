@@ -6,7 +6,7 @@ import com.jlangen.vaultbox.architecture.DaggerVaultboxComponent
 import com.jlangen.vaultbox.architecture.Navigator
 import com.jlangen.vaultbox.architecture.VaultboxComponent
 import com.jlangen.vaultbox.permissions.PermissionModule
-import com.jlangen.vaultbox.vaults.VaultsModule
+import com.jlangen.vaultbox.vault.VaultModule
 
 class VaultboxApplication : Application() {
 
@@ -21,7 +21,7 @@ class VaultboxApplication : Application() {
         component = DaggerVaultboxComponent.builder()
                 .appModule(AppModule(this))
                 .permissionModule(PermissionModule())
-                .vaultsModule(VaultsModule())
+                .vaultModule(VaultModule())
                 .build()
     }
 }

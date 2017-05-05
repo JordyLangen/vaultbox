@@ -1,6 +1,7 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.vault
 
 import android.os.Environment
+import com.jlangen.vaultbox.vault.Vault
 import io.reactivex.Observable
 import java.io.File
 

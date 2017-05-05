@@ -6,7 +6,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
+import com.jakewharton.rxrelay2.PublishRelay
 import com.jlangen.vaultbox.architecture.state.StateRenderer
+import com.jlangen.vaultbox.vault.Vault
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_vaults_overview.view.*
 
 class VaultsView @JvmOverloads constructor(
@@ -14,6 +17,9 @@ class VaultsView @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs, defStyleAttr), StateRenderer<VaultsViewState> {
 
     private val adapter = VaultsAdapter(emptyList())
+
+    val openVaultIntents: Observable<Vault>
+        get() = adapter.onVaultClickRelay
 
     override fun onFinishInflate() {
         super.onFinishInflate()
