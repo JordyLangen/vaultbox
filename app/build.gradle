@@ -45,6 +45,8 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
 
+    compile 'com.madgag.spongycastle:core:1.54.0.0'
+    compile 'com.madgag.spongycastle:prov:1.54.0.0'
 
     compile "com.google.dagger:dagger:${daggerVersion}"
     kapt("com.google.dagger:dagger-compiler:${daggerVersion}")

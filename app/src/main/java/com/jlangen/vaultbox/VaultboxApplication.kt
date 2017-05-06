@@ -16,8 +16,6 @@ class VaultboxApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        System.loadLibrary("final-key")
-        System.loadLibrary("argon2")
 
         component = DaggerVaultboxComponent.builder()
                 .appModule(AppModule(this))
