@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.screens.vaults
 
 import android.content.Context
 import android.support.v7.util.DiffUtil
@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.jakewharton.rxrelay2.PublishRelay
 import com.jlangen.vaultbox.architecture.state.StateRenderer
-import com.jlangen.vaultbox.vault.Vault
+import com.jlangen.vaultbox.screens.vault.Vault
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_vaults_overview.view.*
 

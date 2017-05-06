@@ -6,7 +6,7 @@ import com.jlangen.vaultbox.architecture.DaggerVaultboxComponent
 import com.jlangen.vaultbox.architecture.Navigator
 import com.jlangen.vaultbox.architecture.VaultboxComponent
 import com.jlangen.vaultbox.permissions.PermissionModule
-import com.jlangen.vaultbox.vault.VaultModule
+import com.jlangen.vaultbox.screens.vault.VaultModule
 
 class VaultboxApplication : Application() {
 
@@ -17,6 +17,7 @@ class VaultboxApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         System.loadLibrary("final-key")
+        System.loadLibrary("argon2")
 
         component = DaggerVaultboxComponent.builder()
                 .appModule(AppModule(this))

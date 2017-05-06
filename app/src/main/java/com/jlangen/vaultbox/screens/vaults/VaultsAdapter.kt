@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.screens.vaults
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.jakewharton.rxrelay2.PublishRelay
 import com.jlangen.vaultbox.R
-import com.jlangen.vaultbox.vault.Vault
+import com.jlangen.vaultbox.screens.vault.Vault
 
 class VaultsAdapter(var vaults: List<Vault>) : RecyclerView.Adapter<VaultsAdapter.VaultViewHolder>() {
 

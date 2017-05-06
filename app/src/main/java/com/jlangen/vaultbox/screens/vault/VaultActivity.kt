@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.vault
+package com.jlangen.vaultbox.screens.vault
 
 import android.os.Bundle
 import com.jlangen.vaultbox.R

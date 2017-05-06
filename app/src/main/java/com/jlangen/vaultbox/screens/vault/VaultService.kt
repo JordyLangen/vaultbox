@@ -1,12 +1,12 @@
-package com.jlangen.vaultbox.vault
+package com.jlangen.vaultbox.screens.vault
 
 import android.Manifest
 import android.content.Context
 import android.content.Intent
 import com.jakewharton.rxrelay2.BehaviorRelay
-import com.jlangen.vaultbox.vault.VaultActivity
+import com.jlangen.vaultbox.screens.vault.VaultActivity
 import com.jlangen.vaultbox.permissions.PermissionService
-import com.jlangen.vaultbox.vault.Vault
+import com.jlangen.vaultbox.screens.vault.Vault
 import io.reactivex.Observable
 
 class VaultService(private val vaultRepository: VaultRepository,

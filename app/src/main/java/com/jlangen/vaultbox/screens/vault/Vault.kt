@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.vault
+package com.jlangen.vaultbox.screens.vault
 
 import java.io.Serializable
 

@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.vault
+package com.jlangen.vaultbox.screens.vault
 
 import android.util.Log
 import com.jlangen.vaultbox.architecture.coordinators.Coordinator

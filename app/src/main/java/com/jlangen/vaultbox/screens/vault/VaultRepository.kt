@@ -1,7 +1,7 @@
-package com.jlangen.vaultbox.vault
+package com.jlangen.vaultbox.screens.vault
 
 import android.os.Environment
-import com.jlangen.vaultbox.vault.Vault
+import com.jlangen.vaultbox.screens.vault.Vault
 import io.reactivex.Observable
 import java.io.File
 

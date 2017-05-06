@@ -1,7 +1,7 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.screens.vaults
 
 import android.support.v7.util.DiffUtil
-import com.jlangen.vaultbox.vault.Vault
+import com.jlangen.vaultbox.screens.vault.Vault
 
 class VaultDiffCallback(val old: List<Vault>, val new: List<Vault>) : DiffUtil.Callback() {
 

@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.screens.vaults
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

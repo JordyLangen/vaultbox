@@ -1,7 +1,7 @@
-package com.jlangen.vaultbox.vaults
+package com.jlangen.vaultbox.screens.vaults
 
 import com.jlangen.vaultbox.architecture.coordinators.Coordinator
-import com.jlangen.vaultbox.vault.VaultService
+import com.jlangen.vaultbox.screens.vault.VaultService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
