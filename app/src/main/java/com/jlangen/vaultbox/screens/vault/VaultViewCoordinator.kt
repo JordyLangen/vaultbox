@@ -9,5 +9,6 @@ class VaultViewCoordinator(private val vaultService: VaultService) : Coordinator
 
     override fun attach(view: VaultView) {
         Log.d("VaultView", "current state is $state")
+        vaultService.decrypt(state.vault)
     }
 }

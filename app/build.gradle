@@ -25,11 +25,6 @@ android {
         }
     }
 
-    externalNativeBuild {
-        cmake {
-            path "src/main/jni/CMakeLists.txt"
-        }
-    }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -54,6 +49,13 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxkotlin:2.0.0'
     compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+
+    compile ('de.slackspace:openkeepass:0.6.1') {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
+
     testCompile 'junit:junit:4.12'
 }
 repositories {
