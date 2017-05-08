@@ -14,12 +14,6 @@ android:
 
 script: ./gradlew assemble test
 
-before_install:
-  - curl -L http://dl.google.com/android/repository/android-ndk-r14-linux-x86_64.zip -O
-  - unzip -q android-ndk-r14-linux-x86_64.zip
-  - export ANDROID_NDK_HOME=`pwd`/android-ndk-r14
-  - export PATH=$PATH:${ANDROID_NDK_HOME}
-
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
