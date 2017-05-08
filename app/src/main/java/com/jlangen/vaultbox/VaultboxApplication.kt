@@ -6,7 +6,7 @@ import com.jlangen.vaultbox.architecture.DaggerVaultboxComponent
 import com.jlangen.vaultbox.architecture.Navigator
 import com.jlangen.vaultbox.architecture.VaultboxComponent
 import com.jlangen.vaultbox.permissions.PermissionModule
-import com.jlangen.vaultbox.screens.vault.VaultModule
+import com.jlangen.vaultbox.screens.VaultModule
 
 class VaultboxApplication : Application() {
 

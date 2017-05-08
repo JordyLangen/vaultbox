@@ -18,7 +18,7 @@ class VaultsView @JvmOverloads constructor(
 
     private val adapter = VaultsAdapter(emptyList())
 
-    val openVaultIntents: Observable<Vault>
+    val showVaultIntents: Observable<Vault>
         get() = adapter.onVaultClickRelay
 
     override fun onFinishInflate() {

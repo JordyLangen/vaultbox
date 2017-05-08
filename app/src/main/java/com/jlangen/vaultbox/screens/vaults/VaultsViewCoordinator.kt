@@ -1,7 +1,7 @@
 package com.jlangen.vaultbox.screens.vaults
 
 import com.jlangen.vaultbox.architecture.coordinators.Coordinator
-import com.jlangen.vaultbox.screens.vault.VaultService
+import com.jlangen.vaultbox.services.VaultService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
@@ -15,9 +15,9 @@ class VaultsViewCoordinator(var vaultService: VaultService) : Coordinator<Vaults
     override fun attach(view: VaultsView) {
         view.render(state)
 
-        disposables += view.openVaultIntents
+        disposables += view.showVaultIntents
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { vaultService.open(it) }
+                .subscribe { vaultService.show(it) }
 
         disposables += vaultService.findAll()
                 .subscribeOn(Schedulers.io())

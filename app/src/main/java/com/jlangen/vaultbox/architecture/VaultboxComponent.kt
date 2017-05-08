@@ -2,7 +2,7 @@ package com.jlangen.vaultbox.architecture
 
 import com.jlangen.vaultbox.permissions.PermissionModule
 import com.jlangen.vaultbox.permissions.PermissionService
-import com.jlangen.vaultbox.screens.vault.VaultModule
+import com.jlangen.vaultbox.screens.VaultModule
 import com.jlangen.vaultbox.screens.vault.VaultViewCoordinator
 import com.jlangen.vaultbox.screens.vaults.VaultOverviewActivity
 import com.jlangen.vaultbox.screens.vaults.VaultsViewCoordinator

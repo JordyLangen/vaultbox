@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.screens.vault
+package com.jlangen.vaultbox.services
 
 import android.Manifest
 import android.content.Context
@@ -8,6 +8,8 @@ import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jlangen.vaultbox.screens.vault.VaultActivity
 import com.jlangen.vaultbox.permissions.PermissionService
 import com.jlangen.vaultbox.screens.vault.Vault
+import com.jlangen.vaultbox.repositories.VaultRepository
+import com.jlangen.vaultbox.screens.vault.VaultEntry
 import de.slackspace.openkeepass.KeePassDatabase
 import io.reactivex.Observable
 
@@ -39,13 +41,20 @@ class VaultService(private val vaultRepository: VaultRepository,
                 }
     }
 
-    fun open(vault: Vault) {
+    fun show(vault: Vault) {
         selectedVault = vault
         context.startActivity(Intent(context, VaultActivity::class.java))
     }
 
-    fun decrypt(vault: Vault) {
-        val result = KeePassDatabase.getInstance(vault.path).openDatabase("test123")
-        Log.d("test", result.toString())
+    fun open(vault: Vault, password: String): Observable<Vault> {
+        return Observable.fromCallable {
+            KeePassDatabase.getInstance(vault.path).openDatabase(password)
+        }.flatMap { database ->
+            val entries = database.entries.map { entry ->
+                VaultEntry(entry.uuid, entry.title, entry.username, entry.password, entry.url, entry.notes, entry.times.creationTime, entry.times.expires(), entry.times.expiryTime, entry.times.lastModificationTime)
+            }
+
+            Observable.just(Vault(vault.name, vault.path, entries))
+        }
     }
 }
