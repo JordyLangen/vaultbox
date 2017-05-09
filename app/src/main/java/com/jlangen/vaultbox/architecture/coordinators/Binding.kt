@@ -6,6 +6,7 @@ import android.view.View
 import com.jlangen.vaultbox.R
 import com.jlangen.vaultbox.architecture.state.StateRenderer
 import com.jlangen.vaultbox.architecture.state.StateStore
+import org.spongycastle.asn1.tsp.TSTInfo
 
 internal class Binding<in TState, TView : StateRenderer<TState>>(private val coordinator: Coordinator<TState, TView>, private val view: View) : View.OnAttachStateChangeListener {
     private var attached: View? = null
@@ -25,6 +26,7 @@ internal class Binding<in TState, TView : StateRenderer<TState>>(private val coo
             coordinator.state = state
         }
 
+        StateStore.update(view.id, coordinator.state, view.context)
         coordinator.attach(view as TView)
         view.setTag(R.id.coordinator, coordinator)
     }
