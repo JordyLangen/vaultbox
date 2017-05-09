@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Vaultbox</string>
+    <string name="hint_password">password</string>
+    <string name="vault_unlock">Open</string>
+    <string name="vault_enter_password">Enter your password</string>
+    <string name="vault_unlock_error_invalid_password">The password you entered does not seem to be valid</string>
 </resources>
