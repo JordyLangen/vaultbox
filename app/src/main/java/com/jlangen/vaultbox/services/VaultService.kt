@@ -11,6 +11,7 @@ import com.jlangen.vaultbox.screens.vault.Vault
 import com.jlangen.vaultbox.repositories.VaultRepository
 import com.jlangen.vaultbox.screens.vault.VaultEntry
 import de.slackspace.openkeepass.KeePassDatabase
+import de.slackspace.openkeepass.exception.KeePassDatabaseUnreadableException
 import io.reactivex.Observable
 
 class VaultService(private val vaultRepository: VaultRepository,
@@ -46,15 +47,22 @@ class VaultService(private val vaultRepository: VaultRepository,
         context.startActivity(Intent(context, VaultActivity::class.java))
     }
 
-    fun open(vault: Vault, password: String): Observable<Vault> {
-        return Observable.fromCallable {
-            KeePassDatabase.getInstance(vault.path).openDatabase(password)
-        }.flatMap { database ->
-            val entries = database.entries.map { entry ->
-                VaultEntry(entry.uuid, entry.title, entry.username, entry.password, entry.url, entry.notes, entry.times.creationTime, entry.times.expires(), entry.times.expiryTime, entry.times.lastModificationTime)
-            }
+    fun open(vault: Vault, password: String): Observable<ResultOrError<Vault>> {
+        if (password.isBlank()) {
+            return Observable.just(ResultOrError(exception = KeePassDatabaseUnreadableException("invalid password")))
+        }
 
-            Observable.just(Vault(vault.name, vault.path, entries))
+        return Observable.fromCallable {
+            try {
+                val database = KeePassDatabase.getInstance(vault.path).openDatabase(password)
+                val entries = database.entries.map { entry ->
+                    VaultEntry(entry.uuid, entry.title, entry.username, entry.password, entry.url, entry.notes, entry.times.creationTime, entry.times.expires(), entry.times.expiryTime, entry.times.lastModificationTime)
+                }
+
+                ResultOrError(result = Vault(vault.name, vault.path, entries))
+            } catch (exception: KeePassDatabaseUnreadableException) {
+                ResultOrError<Vault>(exception = exception)
+            }
         }
     }
 }
