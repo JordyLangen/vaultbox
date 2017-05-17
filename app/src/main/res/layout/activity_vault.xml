@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".screens.vault.VaultActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/vault_entries_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <LinearLayout
         android:id="@+id/vault_unlock_view"
         android:layout_width="match_parent"
