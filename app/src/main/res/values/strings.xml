@@ -5,5 +5,5 @@
     <string name="vault_enter_password">Enter your password</string>
     <string name="hint_keyfile">key file</string>
     <string name="unlock_your_database">Unlock your database</string>
-    <string name="vault_unlock_error_invalid_password">The password you entered does not seem to be valid</string>
+    <string name="vault_unlock_error_invalid_password">The password is not valid</string>
 </resources>
