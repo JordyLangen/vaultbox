@@ -3,4 +3,6 @@
     <string name="hint_password">password</string>
     <string name="vault_unlock">Open</string>
     <string name="vault_enter_password">Enter your password</string>
+    <string name="hint_keyfile">key file</string>
+    <string name="unlock_your_database">Unlock your database</string>
 </resources>
