@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.jakewharton.rxrelay2.BehaviorRelay
+import com.jlangen.vaultbox.R
 import com.jlangen.vaultbox.screens.vault.VaultActivity
 import com.jlangen.vaultbox.permissions.PermissionService
 import com.jlangen.vaultbox.screens.vault.Vault
@@ -18,7 +19,9 @@ class VaultService(private val vaultRepository: VaultRepository,
                    private val permissionService: PermissionService,
                    private val context: Context) {
 
-    var selectedVault: Vault? = null
+    object SharedState {
+        var selectedVault: Vault? = null
+    }
 
     fun findAll(): Observable<List<Vault>> {
         if (permissionService.has(Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -43,13 +46,13 @@ class VaultService(private val vaultRepository: VaultRepository,
     }
 
     fun show(vault: Vault) {
-        selectedVault = vault
+        SharedState.selectedVault = vault
         context.startActivity(Intent(context, VaultActivity::class.java))
     }
 
     fun open(vault: Vault, password: String): Observable<ResultOrError<Vault>> {
         if (password.isBlank()) {
-            return Observable.just(ResultOrError(exception = KeePassDatabaseUnreadableException("invalid password")))
+            return Observable.just(ResultOrError(exception = KeePassDatabaseUnreadableException(context.getString(R.string.vault_unlock_error_invalid_password))))
         }
 
         return Observable.fromCallable {

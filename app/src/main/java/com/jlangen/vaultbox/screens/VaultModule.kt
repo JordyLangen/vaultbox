@@ -18,7 +18,7 @@ class VaultModule {
         return VaultRepository()
     }
 
-    @Provides @Singleton
+    @Provides
     fun provideVaultService(vaultRepository: VaultRepository, permissionService: PermissionService, context: Context): VaultService {
         return VaultService(vaultRepository, permissionService, context)
     }

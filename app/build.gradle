@@ -33,6 +33,7 @@ android {
 ext {
     daggerVersion = '2.8'
     supportVersion = '25.3.1'
+    architectureComponentsVersion = '1.0.0-alpha1'
 }
 
 dependencies {
@@ -40,6 +41,10 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
     compile "com.android.support:design:$supportVersion"
+
+    compile "android.arch.lifecycle:runtime:$architectureComponentsVersion"
+    compile "android.arch.lifecycle:extensions:$architectureComponentsVersion"
+    kapt("android.arch.lifecycle:compiler:$architectureComponentsVersion")
 
     compile 'com.madgag.spongycastle:core:1.54.0.0'
     compile 'com.madgag.spongycastle:prov:1.54.0.0'

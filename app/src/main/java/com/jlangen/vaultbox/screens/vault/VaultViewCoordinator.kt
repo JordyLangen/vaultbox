@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 
 class VaultViewCoordinator(private val vaultService: VaultService) : Coordinator<VaultViewState, VaultView>() {
 
-    override var state: VaultViewState = VaultViewState(vaultService.selectedVault ?: throw IllegalStateException("tried to show the vault view without a selected view"), UnlockState.Closed)
+    override var state: VaultViewState = VaultViewState(VaultService.SharedState.selectedVault ?: throw IllegalStateException("tried to show the vault view without a selected view"), UnlockState.Closed)
     private val disposables = CompositeDisposable()
 
     override fun attach(view: VaultView) {
