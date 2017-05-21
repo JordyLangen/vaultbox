@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.jakewharton.rxrelay2.PublishRelay
 import com.jlangen.vaultbox.architecture.state.StateRenderer
-import com.jlangen.vaultbox.screens.vault.Vault
+import com.jlangen.vaultbox.models.Vault
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_vaults_overview.view.*
 

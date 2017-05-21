@@ -50,7 +50,6 @@ class VaultView @JvmOverloads constructor(
         vault_unlock_view.visibility = View.GONE
         val diffResult = DiffUtil.calculateDiff(VaultEntryDiffCallback(adapter.vaultEntries, state.vault.entries), true)
         adapter.vaultEntries = state.vault.entries
-        adapter.updateGroupIndicators()
         diffResult.dispatchUpdatesTo(adapter)
     }
 

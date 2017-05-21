@@ -1,5 +1,6 @@
 package com.jlangen.vaultbox.screens.vault
 
+import com.jlangen.vaultbox.models.VaultIcon
 import java.util.*
 
 data class VaultEntry(
@@ -14,4 +15,7 @@ data class VaultEntry(
         val expiryTime: Calendar?,
         val lastModificationTime: Calendar?,
         val lastAccessTime: Calendar?,
-        val group: String)
+        val group: String,
+        val groupUuid: UUID,
+        val vaultIcon: VaultIcon,
+        val icon: ByteArray?)

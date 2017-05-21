@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.jakewharton.rxrelay2.PublishRelay
 import com.jlangen.vaultbox.R
-import com.jlangen.vaultbox.screens.vault.Vault
+import com.jlangen.vaultbox.models.Vault
 
 class VaultsAdapter(var vaults: List<Vault>) : RecyclerView.Adapter<VaultsAdapter.VaultViewHolder>() {
 

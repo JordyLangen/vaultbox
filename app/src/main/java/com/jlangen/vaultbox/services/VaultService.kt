@@ -4,16 +4,17 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jlangen.vaultbox.R
-import com.jlangen.vaultbox.screens.vault.VaultActivity
+import com.jlangen.vaultbox.models.Vault
+import com.jlangen.vaultbox.models.VaultIcon
 import com.jlangen.vaultbox.permissions.PermissionService
-import com.jlangen.vaultbox.screens.vault.Vault
 import com.jlangen.vaultbox.repositories.VaultRepository
+import com.jlangen.vaultbox.screens.vault.VaultActivity
 import com.jlangen.vaultbox.screens.vault.VaultEntry
 import de.slackspace.openkeepass.KeePassDatabase
 import de.slackspace.openkeepass.exception.KeePassDatabaseUnreadableException
 import io.reactivex.Observable
+import java.util.*
 
 class VaultService(private val vaultRepository: VaultRepository,
                    private val permissionService: PermissionService,
@@ -58,11 +59,38 @@ class VaultService(private val vaultRepository: VaultRepository,
         return Observable.fromCallable {
             try {
                 val database = KeePassDatabase.getInstance(vault.path).openDatabase(password)
+                database.meta.customIcons
                 val entries = database.entries
                         .map { entry ->
                             val group = database.groups.filter { group -> group.entries.contains(entry) }.singleOrNull()
                             val groupName = group?.name ?: "Unknown"
-                            VaultEntry(entry.uuid, entry.title, entry.username, entry.password, entry.url, entry.notes, entry.times.creationTime, entry.times.expires(), entry.times.expiryTime, entry.times.lastModificationTime, entry.times.lastAccessTime, groupName)
+                            val groupUuid = group?.uuid ?: UUID.randomUUID()
+                            var icon: ByteArray? = null
+                            val vaultIcon = VaultIcon.values().singleOrNull { it.id == entry.iconId } ?: VaultIcon.KEY
+
+                            if (entry.customIconUuid != null) {
+                                icon = database.meta.customIcons.getIconByUuid(entry.customIconUuid).data
+                            }
+
+                            VaultEntry(
+                                    entry.uuid,
+                                    entry.title,
+                                    entry.username,
+                                    entry.password,
+                                    entry.url,
+                                    entry.notes,
+                                    entry.times.creationTime,
+                                    entry.times.expires(),
+                                    entry.times.expiryTime,
+                                    entry.times.lastModificationTime,
+                                    entry.times.lastAccessTime,
+                                    groupName,
+                                    groupUuid,
+                                    vaultIcon,
+                                    icon)
+                        }
+                        .filter { entry ->
+                            entry.groupUuid != database.meta.recycleBinUuid
                         }
                         .sortedBy(VaultEntry::title)
 
