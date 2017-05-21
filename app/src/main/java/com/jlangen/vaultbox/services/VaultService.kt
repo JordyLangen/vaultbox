@@ -72,22 +72,7 @@ class VaultService(private val vaultRepository: VaultRepository,
                                 icon = database.meta.customIcons.getIconByUuid(entry.customIconUuid).data
                             }
 
-                            VaultEntry(
-                                    entry.uuid,
-                                    entry.title,
-                                    entry.username,
-                                    entry.password,
-                                    entry.url,
-                                    entry.notes,
-                                    entry.times.creationTime,
-                                    entry.times.expires(),
-                                    entry.times.expiryTime,
-                                    entry.times.lastModificationTime,
-                                    entry.times.lastAccessTime,
-                                    groupName,
-                                    groupUuid,
-                                    vaultIcon,
-                                    icon)
+                            VaultEntry(entry, groupName, groupUuid, vaultIcon, icon)
                         }
                         .filter { entry ->
                             entry.groupUuid != database.meta.recycleBinUuid

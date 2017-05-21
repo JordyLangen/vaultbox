@@ -1,6 +1,7 @@
 package com.jlangen.vaultbox.screens.vault
 
 import com.jlangen.vaultbox.models.VaultIcon
+import de.slackspace.openkeepass.domain.Entry
 import java.util.*
 
 data class VaultEntry(
@@ -18,4 +19,18 @@ data class VaultEntry(
         val group: String,
         val groupUuid: UUID,
         val vaultIcon: VaultIcon,
-        val icon: ByteArray?)
+        val icon: ByteArray?) {
+
+    constructor(entry: Entry, group: String, groupUuid: UUID, vaultIcon: VaultIcon, icon: ByteArray?) : this(
+            entry.uuid,
+            entry.title,
+            entry.username,
+            entry.password,
+            entry.url,
+            entry.notes,
+            entry.times.creationTime,
+            entry.times.expires(),
+            entry.times.expiryTime,
+            entry.times.lastModificationTime,
+            entry.times.lastAccessTime, group, groupUuid, vaultIcon, icon)
+}
