@@ -17,7 +17,8 @@ class VaultViewCoordinator(private val vaultService: VaultService) : Coordinator
         view.render(state)
 
         disposables += view.openVaultIntents
-                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                // todo loading-unlocking state
                 .switchMap { password ->
                     vaultService.open(state.vault, password)
                 }

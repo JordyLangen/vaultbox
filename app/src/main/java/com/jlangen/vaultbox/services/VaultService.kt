@@ -58,9 +58,13 @@ class VaultService(private val vaultRepository: VaultRepository,
         return Observable.fromCallable {
             try {
                 val database = KeePassDatabase.getInstance(vault.path).openDatabase(password)
-                val entries = database.entries.map { entry ->
-                    VaultEntry(entry.uuid, entry.title, entry.username, entry.password, entry.url, entry.notes, entry.times.creationTime, entry.times.expires(), entry.times.expiryTime, entry.times.lastModificationTime)
-                }
+                val entries = database.entries
+                        .map { entry ->
+                            val group = database.groups.filter { group -> group.entries.contains(entry) }.singleOrNull()
+                            val groupName = group?.name ?: "Unknown"
+                            VaultEntry(entry.uuid, entry.title, entry.username, entry.password, entry.url, entry.notes, entry.times.creationTime, entry.times.expires(), entry.times.expiryTime, entry.times.lastModificationTime, entry.times.lastAccessTime, groupName)
+                        }
+                        .sortedBy(VaultEntry::title)
 
                 ResultOrError(result = Vault(vault.name, vault.path, entries))
             } catch (exception: KeePassDatabaseUnreadableException) {

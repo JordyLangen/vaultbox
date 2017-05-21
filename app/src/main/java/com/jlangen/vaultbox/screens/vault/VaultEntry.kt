@@ -12,4 +12,6 @@ data class VaultEntry(
         val creationTime: Calendar?,
         val expires: Boolean? = false,
         val expiryTime: Calendar?,
-        val lastModificationTime: Calendar?)
+        val lastModificationTime: Calendar?,
+        val lastAccessTime: Calendar?,
+        val group: String)
