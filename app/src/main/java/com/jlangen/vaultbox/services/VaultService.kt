@@ -3,7 +3,6 @@ package com.jlangen.vaultbox.services
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.jlangen.vaultbox.R
 import com.jlangen.vaultbox.models.Vault
 import com.jlangen.vaultbox.models.VaultIcon
@@ -84,5 +83,20 @@ class VaultService(private val vaultRepository: VaultRepository,
                 ResultOrError<Vault>(exception = exception)
             }
         }
+    }
+
+    fun searchVault(vault: Vault, text: String): List<VaultEntry> {
+        if (text.isEmpty()) {
+            return vault.entries
+        }
+
+        return vault.entries
+                .filter { (_, title, username, _, url, notes, _, _, _, _, _, group) ->
+                    title?.contains(text, ignoreCase = true) ?: false ||
+                            username?.contains(text, ignoreCase = true) ?: false ||
+                            notes?.contains(text, ignoreCase = true) ?: false ||
+                            url?.contains(text, ignoreCase = true) ?: false ||
+                            group.contains(text, ignoreCase = true)
+                }
     }
 }
