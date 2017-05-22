@@ -1,22 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.jlangen.vaultbox.screens.vault.VaultView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vault_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.vault.VaultActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            android:background="@color/primary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        <EditText
+            android:id="@+id/vault_search_edit_text"
+            style="@style/Vaultbox.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/hint_search"
+            android:visibility="gone" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/vault_entries_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <LinearLayout
         android:id="@+id/vault_unlock_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +76,7 @@
             style="@style/Vaultbox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="36dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="4dp"
@@ -60,8 +91,8 @@
             android:layout_marginEnd="36dp"
             android:layout_marginStart="36dp"
             android:background="@drawable/background_button"
-            android:textColor="@color/primary_text"
-            android:text="@string/vault_unlock" />
+            android:text="@string/vault_unlock"
+            android:textColor="@color/primary_text" />
 
     </LinearLayout>
 

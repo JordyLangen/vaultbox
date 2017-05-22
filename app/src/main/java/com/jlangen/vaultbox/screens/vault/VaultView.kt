@@ -39,6 +39,7 @@ class VaultView @JvmOverloads constructor(
     }
 
     override fun render(state: VaultViewState) {
+        toolbar.title = state.vault.name
         if (state.unlockState == UnlockState.Opened) {
             showVaultEntries(state)
         } else {
@@ -47,6 +48,7 @@ class VaultView @JvmOverloads constructor(
     }
 
     private fun showVaultEntries(state: VaultViewState) {
+        vault_search_edit_text.visibility = View.VISIBLE
         vault_unlock_view.visibility = View.GONE
         val diffResult = DiffUtil.calculateDiff(VaultEntryDiffCallback(adapter.vaultEntries, state.vault.entries), true)
         adapter.vaultEntries = state.vault.entries
@@ -54,6 +56,7 @@ class VaultView @JvmOverloads constructor(
     }
 
     private fun showUnlockView(state: VaultViewState) {
+        vault_search_edit_text.visibility = View.GONE
         vault_unlock_view.visibility = View.VISIBLE
 
         if (state.unlockState == UnlockState.InvalidPasswordUnlockAttempt) {
