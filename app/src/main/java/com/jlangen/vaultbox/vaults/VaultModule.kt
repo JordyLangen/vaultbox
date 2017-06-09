@@ -1,11 +1,11 @@
-package com.jlangen.vaultbox.screens
+package com.jlangen.vaultbox.vaults
 
 import android.content.Context
 import com.jlangen.vaultbox.permissions.PermissionService
-import com.jlangen.vaultbox.repositories.VaultRepository
-import com.jlangen.vaultbox.screens.vault.VaultViewCoordinator
-import com.jlangen.vaultbox.services.VaultService
-import com.jlangen.vaultbox.screens.vaults.VaultsViewCoordinator
+import com.jlangen.vaultbox.vaults.VaultRepository
+import com.jlangen.vaultbox.vaults.vault.VaultViewCoordinator
+import com.jlangen.vaultbox.vaults.VaultService
+import com.jlangen.vaultbox.vaults.VaultsViewCoordinator
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

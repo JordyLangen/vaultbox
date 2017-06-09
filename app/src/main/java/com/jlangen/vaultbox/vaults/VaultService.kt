@@ -1,15 +1,16 @@
-package com.jlangen.vaultbox.services
+package com.jlangen.vaultbox.vaults
 
 import android.Manifest
 import android.content.Context
 import android.content.Intent
 import com.jlangen.vaultbox.R
-import com.jlangen.vaultbox.models.Vault
-import com.jlangen.vaultbox.models.VaultIcon
+import com.jlangen.vaultbox.vaults.Vault
+import com.jlangen.vaultbox.vaults.VaultIcon
 import com.jlangen.vaultbox.permissions.PermissionService
-import com.jlangen.vaultbox.repositories.VaultRepository
-import com.jlangen.vaultbox.screens.vault.VaultActivity
-import com.jlangen.vaultbox.screens.vault.VaultEntry
+import com.jlangen.vaultbox.vaults.VaultRepository
+import com.jlangen.vaultbox.vaults.vault.VaultActivity
+import com.jlangen.vaultbox.vaults.vault.VaultEntry
+import com.jlangen.vaultbox.vaults.ResultOrError
 import de.slackspace.openkeepass.KeePassDatabase
 import de.slackspace.openkeepass.exception.KeePassDatabaseUnreadableException
 import io.reactivex.Observable

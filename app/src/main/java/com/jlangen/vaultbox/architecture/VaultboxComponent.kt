@@ -2,10 +2,10 @@ package com.jlangen.vaultbox.architecture
 
 import com.jlangen.vaultbox.permissions.PermissionModule
 import com.jlangen.vaultbox.permissions.PermissionService
-import com.jlangen.vaultbox.screens.VaultModule
-import com.jlangen.vaultbox.screens.vault.VaultViewCoordinator
-import com.jlangen.vaultbox.screens.vaults.VaultOverviewActivity
-import com.jlangen.vaultbox.screens.vaults.VaultsViewCoordinator
+import com.jlangen.vaultbox.vaults.VaultModule
+import com.jlangen.vaultbox.vaults.vault.VaultViewCoordinator
+import com.jlangen.vaultbox.vaults.VaultOverviewActivity
+import com.jlangen.vaultbox.vaults.VaultsViewCoordinator
 import dagger.Component
 import javax.inject.Singleton
 

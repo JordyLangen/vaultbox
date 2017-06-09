@@ -4,8 +4,8 @@ import android.view.View
 import com.jlangen.vaultbox.VaultboxApplication
 import com.jlangen.vaultbox.architecture.coordinators.Coordinator
 import com.jlangen.vaultbox.architecture.coordinators.CoordinatorProvider
-import com.jlangen.vaultbox.screens.vault.VaultView
-import com.jlangen.vaultbox.screens.vaults.VaultsView
+import com.jlangen.vaultbox.vaults.vault.VaultView
+import com.jlangen.vaultbox.vaults.VaultsView
 
 class DaggerCoordinatorProvider : CoordinatorProvider {
 

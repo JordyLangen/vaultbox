@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.screens.vault
+package com.jlangen.vaultbox.vaults.vault
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar

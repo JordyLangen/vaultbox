@@ -1,9 +1,9 @@
-package com.jlangen.vaultbox.screens.vault
+package com.jlangen.vaultbox.vaults.vault
 
 import android.util.Log
 import com.jlangen.vaultbox.architecture.coordinators.Coordinator
-import com.jlangen.vaultbox.services.VaultService
-import com.jlangen.vaultbox.screens.vault.VaultViewState.UnlockState
+import com.jlangen.vaultbox.vaults.VaultService
+import com.jlangen.vaultbox.vaults.vault.VaultViewState.UnlockState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign

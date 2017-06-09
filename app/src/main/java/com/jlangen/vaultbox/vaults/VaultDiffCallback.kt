@@ -1,8 +1,9 @@
-package com.jlangen.vaultbox.screens.vault
+package com.jlangen.vaultbox.vaults
 
 import android.support.v7.util.DiffUtil
+import com.jlangen.vaultbox.vaults.Vault
 
-class VaultEntryDiffCallback(val old: List<VaultEntry>, val new: List<VaultEntry>) : DiffUtil.Callback() {
+class VaultDiffCallback(val old: List<Vault>, val new: List<Vault>) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
         return old.size

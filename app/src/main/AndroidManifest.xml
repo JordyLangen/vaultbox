@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.jlangen.vaultbox.screens.vaults.VaultOverviewActivity">
+        <activity android:name="com.jlangen.vaultbox.vaults.VaultOverviewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.jlangen.vaultbox.screens.vault.VaultActivity" />
+        <activity android:name="com.jlangen.vaultbox.vaults.vault.VaultActivity" />
 
     </application>
 </manifest>

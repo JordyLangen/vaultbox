@@ -1,6 +1,6 @@
-package com.jlangen.vaultbox.screens.vault
+package com.jlangen.vaultbox.vaults.vault
 
-import com.jlangen.vaultbox.models.VaultIcon
+import com.jlangen.vaultbox.vaults.VaultIcon
 import de.slackspace.openkeepass.domain.Entry
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.screens.vault
+package com.jlangen.vaultbox.vaults.vault
 
 import android.content.Context
 import android.support.design.widget.CoordinatorLayout
@@ -14,7 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import com.jakewharton.rxrelay2.PublishRelay
 import com.jlangen.vaultbox.R
 import com.jlangen.vaultbox.architecture.state.StateRenderer
-import com.jlangen.vaultbox.screens.vault.VaultViewState.UnlockState
+import com.jlangen.vaultbox.vaults.vault.VaultViewState.UnlockState
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_vault.view.*
@@ -76,19 +76,11 @@ class VaultView @JvmOverloads constructor(
     }
 
     private fun showUnlockingAnimation(state: VaultViewState) {
+        // todo
     }
 
     private fun showVaultEntries(state: VaultViewState) {
-        if (vault_search_edit_text.visibility != View.VISIBLE) {
-            vault_unlock_padlock.setImageResource(R.drawable.padlock_unlock)
-
-            Observable.timer(250, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
-                    .subscribe {
-                        updateVaultEntries(state)
-                    }
-        } else {
-            updateVaultEntries(state)
-        }
+        updateVaultEntries(state)
     }
 
     private fun updateVaultEntries(state: VaultViewState) {

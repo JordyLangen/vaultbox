@@ -1,4 +1,4 @@
-package com.jlangen.vaultbox.models
+package com.jlangen.vaultbox.vaults
 
 import android.support.annotation.DrawableRes
 import com.jlangen.vaultbox.R

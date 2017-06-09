@@ -1,6 +1,6 @@
-package com.jlangen.vaultbox.screens.vault
+package com.jlangen.vaultbox.vaults.vault
 
-import com.jlangen.vaultbox.models.Vault
+import com.jlangen.vaultbox.vaults.Vault
 
 data class VaultViewState(
         val vault: Vault,
